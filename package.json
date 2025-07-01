@@ -18,7 +18,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/vashkatsi/time-window-counter.git"
+    "url": "git+https://github.com/vashkatsi/time-window-counter.git"
   },
   "scripts": {
     "build": "tsc && tsc -p tsconfig.cjs.json",
