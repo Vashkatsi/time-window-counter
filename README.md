@@ -1,5 +1,8 @@
 # Time Window Counter
 
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/vashkatsi/time-window-counter)
+[![npm](https://img.shields.io/npm/dm/@vashkatsi/time-window-counter.svg)](https://www.npmjs.com/package/@vashkatsi/time-window-counter)
+
 Lightweight sliding-window counter that calls **your** handler when event
 frequency crosses a threshold.
 
@@ -53,5 +56,18 @@ const counter3 = new TimeWindowEventCounter(
 | threshold | number | 10 | events required to trigger handler |
 | windowMs | number | 10000 | sliding-window length in milliseconds |
 | cleanupThreshold | number | 100 | array trim point for memory safety |
+
+## Contributing
+
+If you want to contribute to this project, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch for your feature or bug fix
+3. Make your changes
+4. Submit a pull request
+
+### Publishing
+
+To publish the package to npm, you need to set up an NPM_TOKEN secret in the GitHub repository. See [SETUP_NPM_TOKEN.md](SETUP_NPM_TOKEN.md) for instructions.
 
 BSD 3-Clause License © Vashkatsi
