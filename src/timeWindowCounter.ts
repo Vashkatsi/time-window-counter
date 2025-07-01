@@ -1,5 +1,4 @@
 export type ThresholdHandler = (
-    eventName: string,
     count: number,
     windowMs: number,
 ) => void
@@ -18,13 +17,13 @@ export interface CounterOptions {
  * Examples:
  * ```
  * // Default: Alert on 10+ events in 10s
- * const counter = new TimeWindowEventCounter("High latency detected", logHandler);
+ * const counter = new TimeWindowEventCounter(logHandler);
  *
  * // Alert on 10+ events in 1s (10/s rate)
- * const counter = new TimeWindowEventCounter("A lot of errors", logHandler, { threshold: 10, windowMs: 1000 });
+ * const counter = new TimeWindowEventCounter(logHandler, { threshold: 10, windowMs: 1000 });
  *
  * // Alert on 5+ events in 30s
- * const counter = new TimeWindowEventCounter("Too slow proxies", logHandler, { threshold: 5, windowMs: 30000 });
+ * const counter = new TimeWindowEventCounter(logHandler, { threshold: 5, windowMs: 30000 });
  * ```
  */
 export class TimeWindowEventCounter {
@@ -36,7 +35,6 @@ export class TimeWindowEventCounter {
     private readonly cleanupThreshold: number
 
     constructor(
-        private readonly eventName: string,
         private readonly onThreshold: ThresholdHandler,
         opts: CounterOptions = {},
     ) {
@@ -57,7 +55,7 @@ export class TimeWindowEventCounter {
 
         const inWindow = this.timestamps.length - this.startIndex
         if (inWindow >= this.threshold)
-            this.onThreshold(this.eventName, inWindow, this.windowMs)
+            this.onThreshold(inWindow, this.windowMs)
 
         if (this.startIndex > this.cleanupThreshold) {
             this.timestamps = this.timestamps.slice(this.startIndex)
