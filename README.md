@@ -61,8 +61,4 @@ If you want to contribute to this project, please follow these steps:
 3. Make your changes
 4. Submit a pull request
 
-### Publishing
-
-To publish the package to npm, you need to set up an NPM_TOKEN secret in the GitHub repository. See [SETUP_NPM_TOKEN.md](SETUP_NPM_TOKEN.md) for instructions.
-
 BSD 3-Clause License © Vashkatsi
