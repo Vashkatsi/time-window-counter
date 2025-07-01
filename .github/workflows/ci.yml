@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ['main']
+    branches: [ 'main' ]
   pull_request:
 
 jobs:
@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
       - run: npm install --frozen-lockfile
       - run: npm test -- --coverage
   release:
@@ -21,11 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+      - run: npm install --frozen-lockfile
+      - run: npm build
       - run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
