@@ -1,6 +1,6 @@
 {
   "name": "@vashkatsi/time-window-counter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tiny sliding-window event counter with pluggable threshold handler",
   "keywords": ["rate", "throttle", "counter", "sliding-window", "burst", "alert"],
   "license": "BSD 3-Clause License",
