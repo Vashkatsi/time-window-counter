@@ -22,11 +22,13 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@vashkatsi'
       - run: npm install --frozen-lockfile
       - run: npm run build
       - run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
