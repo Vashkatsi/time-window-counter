@@ -10,6 +10,23 @@ export interface CounterOptions {
     cleanupThreshold?: number
 }
 
+/**
+ * Tracks events in a time window and logs fatal errors when frequency exceeds threshold.
+ *
+ * Default: 10 events in 10s window (1/s) triggers fatal log.
+ *
+ * Examples:
+ * ```
+ * // Default: Alert on 10+ events in 10s
+ * const counter = new TimeWindowEventCounter("High latency detected", logHandler);
+ *
+ * // Alert on 10+ events in 1s (10/s rate)
+ * const counter = new TimeWindowEventCounter("A lot of errors", logHandler, { threshold: 10, windowMs: 1000 });
+ *
+ * // Alert on 5+ events in 30s
+ * const counter = new TimeWindowEventCounter("Too slow proxies", logHandler, { threshold: 5, windowMs: 30000 });
+ * ```
+ */
 export class TimeWindowEventCounter {
     private timestamps: number[] = []
     private startIndex = 0
