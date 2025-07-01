@@ -1,0 +1,36 @@
+{
+  "name": "@vashkatsi/time-window-counter",
+  "version": "0.1.0",
+  "description": "Tiny sliding-window event counter with pluggable threshold handler",
+  "keywords": ["rate", "throttle", "counter", "sliding-window", "burst", "alert"],
+  "license": "BSD 3-Clause License",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vashkatsi/time-window-counter.git"
+  },
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "release": "npm version patch && npm publish"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29",
+    "jest": "^29",
+    "ts-jest": "^29",
+    "typescript": "^5"
+  }
+}

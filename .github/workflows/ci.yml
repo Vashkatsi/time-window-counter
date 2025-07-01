@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test -- --coverage
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm publish --access public
